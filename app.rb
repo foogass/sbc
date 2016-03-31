@@ -15,12 +15,12 @@ get '/visit' do
 	erb :visit
 end
 
-post '/visit'
+post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@date_time = params[:date_time]
 
-	f=FIle.open("/users.txt", "a")
+	f = File.open("/users.txt", "a")
 	f.write("Name: #{@username.capitalize}, phone: #{@phone}, Date & Time: #{@date_time}")
 	f.close
 
