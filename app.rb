@@ -19,10 +19,11 @@ post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
 	@date_time = params[:date_time]
+	@barber = params[:barber]
 
-	f = File.open("/users.txt", "a")
-	f.write("Name: #{@username.capitalize}, phone: #{@phone}, Date & Time: #{@date_time}")
-	f.close
+#	f = File.open("/users.txt", "a")
+#	f.write("Name: #{@username.capitalize}, phone: #{@phone}, Date & Time: #{@date_time}, barber: #{@barber}")
+#	f.close
 
 	@title = "Спасибо!"
 	@message = "Мы будем ждать вас в #{@date_time}"
