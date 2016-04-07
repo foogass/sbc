@@ -24,18 +24,25 @@ post '/visit' do
 	# хеш ошибок
 	hh = { :username => 'Введите имя', :phone => 'Введите телефон', :date_time => 'Введите дату и время'}
 
-	# для каждой пары ключ-значение
-	hh.each do |key, value|
-
-		# если параметр пуст
-		if params[key] == ''
-
-			# переменной error присвоить значение value из хэша ошибок
-			@error = hh[key]
-
-			return erb :visit
-		end
+	@error = hh.select {|key,_| params[key] == ''}.values.join(",")
+	if @error != '' 
+		return erb :visit
 	end
+
+# ИЛИ
+
+#	# для каждой пары ключ-значение
+#	hh.each do |key, value|
+#
+#		# если параметр пуст
+#		if params[key] == ''
+#
+#			# переменной error присвоить значение value из хэша ошибок
+#			@error = hh[key]
+#
+#			return erb ;
+#		end
+#	end
 
 #	f = File.open("/users.txt", "a")
 #	f.write("Name: #{@username.capitalize}, phone: #{@phone}, Date & Time: #{@date_time}, barber: #{@barber}")
