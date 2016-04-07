@@ -9,11 +9,11 @@
 		<div class="form-group">
 		    <label class="col-sm-2 control-label">Ваше имя</label>
 		    <div class="col-sm-10">
-		      <input name="username" type="text" class="form-control" placeholder="name">
+		      <input id="aaa" name="username" type="text" class="form-control" placeholder="name">
 			</div>
 		</div>
 		<div class="form-group">
-		    <label class="col-sm-2 control-label">Ваш телефон</label>
+		    <label id='bbb' class="col-sm-2 control-label">Ваш телефон</label>
 		    <div class="col-sm-10">
 		      <input name="phone" type="text" class="form-control" placeholder="phone">
 		    </div>
@@ -21,7 +21,7 @@
 		<div class="form-group">
 		    <label class="col-sm-2 control-label">Когда вас ждать?</label>
 		    <div class="col-sm-10">
-		      <input name="date_time" type="text" class="form-control" placeholder="date and time">
+		      <input name="date_time" type="text" class="form-control ccc" placeholder="date and time">
 		    </div>
 		</div>
 		<div class="form-group">
@@ -40,5 +40,11 @@
 		    </div>
 		</div>
 	</form>
+
+	<script type="text/javascript">
+		$('#aaa').css('background-color','yellow');
+		$('#bbb').css('background-color','yellow');
+		$('.ccc').css('background-color','blue');
+	</script>
 </body>
 </html>

@@ -21,6 +21,22 @@ post '/visit' do
 	@date_time = params[:date_time]
 	@barber = params[:barber]
 
+	# хеш ошибок
+	hh = { :username => 'Введите имя', :phone => 'Введите телефон', :date_time => 'Введите дату и время'}
+
+	# для каждой пары ключ-значение
+	hh.each do |key, value|
+
+		# если параметр пуст
+		if params[key] == ''
+
+			# переменной error присвоить значение value из хэша ошибок
+			@error = hh[key]
+
+			return erb :visit
+		end
+	end
+
 #	f = File.open("/users.txt", "a")
 #	f.write("Name: #{@username.capitalize}, phone: #{@phone}, Date & Time: #{@date_time}, barber: #{@barber}")
 #	f.close
