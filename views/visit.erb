@@ -42,9 +42,10 @@
 			<label class="col-sm-2 control-label">Выберите парикмахера: </label>
 			<div class="col-sm-10">
 				<select name="barber" class="form-control">
-				  <option <%= @barber == 'David Courtney' ? 'selected' : '' %>>David Courtney</option>
-				  <option <%= @barber == 'Aleksandr Kon\'' ? 'selected' : '' %>>Aleksandr Kon'</option>
-				  <option <%= @barber == 'oGo_MK' ? 'selected' : '' %>>oGo_MK</option>
+					<% @barget.each do |row| %>
+				  		<option <%= @barber == row['name'] ? 'selected' : '' %>><%= row['name'] %></option>
+
+					<% end %>
 				</select>
 			</div>
 		</div>
