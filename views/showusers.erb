@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<table class='table'>
+		<% @results.each do |row| %>
+			<tr>
+				<td><%= row['username'] %></td>
+				<td><%= row['phone'] %></td>
+				<td><%= row['datestamp'] %></td>
+				<td><%= row['barber'] %></td>
+			</tr>
+
+		<% end %>
+	</table>
+
+
+</body>
+</html>

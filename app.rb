@@ -81,6 +81,13 @@ post '/visit' do
 	erb :message
 end
 
+get '/showusers' do
+	db = get_db
+
+	@results = db.execute 'SELECT * FROM users ORDER BY id DESC'
+	erb :showusers
+end
+
 get '/contacts' do
 	erb :contacts
 end
