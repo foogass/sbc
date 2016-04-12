@@ -5,15 +5,24 @@
 </head>
 <body>
 	<table class='table'>
-		<% @results.each do |row| %>
+		<thead>
 			<tr>
-				<td><%= row['username'] %></td>
-				<td><%= row['phone'] %></td>
-				<td><%= row['datestamp'] %></td>
-				<td><%= row['barber'] %></td>
+				<th>Имя</th>
+				<th>Телефон</th>
+				<th>Время записи</th>
+				<th>Парикмахер</th>
 			</tr>
-
-		<% end %>
+		</thead>
+		<tbody>
+			<% @results.each do |row| %>
+				<tr>
+					<td><%= row['username'] %></td>
+					<td><%= row['phone'] %></td>
+					<td><%= row['datestamp'] %></td>
+					<td><%= row['barber'] %></td>
+				</tr>
+			<% end %>
+		</tbody>
 	</table>
 
 
