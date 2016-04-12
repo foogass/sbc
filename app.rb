@@ -3,7 +3,22 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
+
+# Проверяем, есть ли в таблице barbers запись с таким именем
+def is_barber_exists? db, name
+	db.execute('SELECT * FROM barbers WHERE name=?', [name]).length > 0   
+end
+
+#
+def seed_db db, barbers
+	barbers.each do |barber|
+		if !is_barber_exists? db, barber
+			db.execute 'INSERT INTO barbers (name) VALUES (?)', [barber]
+		end
+	end
+end
 	
+# Определяем базу данных barbershop.db и включаем возможность возвращения данных в виде хэша
 def get_db
 	db = SQLite3::Database.new 'barbershop.db'
 	db.results_as_hash = true
@@ -21,6 +36,15 @@ configure do
 			"datestamp" TEXT,
 			"barber" TEXT
 		)'
+
+	db.execute 'CREATE TABLE IF NOT EXISTS
+		"barbers"
+		(
+			"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"name" TEXT
+		)'
+
+	seed_db db, ['David Courtney', 'Red Elvis', 'oGo_MK', 'Aliaksandr Salenka']
 end
 
 
